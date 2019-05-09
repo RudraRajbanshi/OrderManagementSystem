@@ -15,41 +15,40 @@ import java.util.List;
 
 import helper.MyHelper;
 
-public class AdminDisplayItemActivity extends AppCompatActivity {
+public class WaiterDisplayItem extends AppCompatActivity {
     private ListView lstItems;
     private ImageView imgAdd,refresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_display_item);
+        setContentView(R.layout.activity_waiter_display_item);
 
         lstItems = findViewById(R.id.lstItems);
-        imgAdd = findViewById(R.id.imgAdd);
         refresh = findViewById(R.id.refresh);
         refresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AdminDisplayItemActivity.this,AdminDisplayItemActivity.class);
+                Intent intent = new Intent(WaiterDisplayItem.this,WaiterDisplayItem.class);
                 startActivity(intent);
             }
         });
+        imgAdd = findViewById(R.id.imgAdd);
         imgAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AdminDisplayItemActivity.this,AdminAddItemActivity.class);
+                Intent intent = new Intent(WaiterDisplayItem.this,WaiterAddItem.class);
                 startActivity(intent);
             }
         });
         loadItem();
     }
-
     private void loadItem(){
         final MyHelper myHelper = new MyHelper(this);
         final SQLiteDatabase sqLiteDatabase = myHelper.getWritableDatabase();
 
         List<Items> itemsList = new ArrayList<>();
-        itemsList = myHelper.GetAllItems(sqLiteDatabase);
+        itemsList = myHelper.GetAllWaiterItems(sqLiteDatabase);
 
         HashMap<Integer,String> hashMap = new HashMap<>();
         for (int i=0;i<itemsList.size();i++){

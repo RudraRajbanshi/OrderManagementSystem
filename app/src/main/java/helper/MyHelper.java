@@ -15,6 +15,7 @@ public class MyHelper extends SQLiteOpenHelper {
     private static final String databaseName = "DictionaryDB";
     private static final int dbVersion = 1;
     private static final String tblItem = "tblItem";
+    private static final String tblKot = "tblKot";
     private static final String itemID = "id";
     private static final String item = "itemname";
 
@@ -53,6 +54,14 @@ public class MyHelper extends SQLiteOpenHelper {
         id = db.insert(tblItem,null,contentValues);
         return id;
     }
+    public long insertWaiterData(String itemName,SQLiteDatabase db){
+        long id;
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(item,itemName);
+
+        id = db.insert(tblKot,null,contentValues);
+        return id;
+    }
 
 //    public List<model.Word> GetAllWords(SQLiteDatabase db){
 //        List<Word> dictionaryList = new ArrayList<>();
@@ -69,6 +78,17 @@ public class MyHelper extends SQLiteOpenHelper {
         List<Items> itemsList = new ArrayList<>();
         String[] columns = {itemID,item};
         Cursor cursor = db.query(tblItem, columns, null, null, null, null, null);
+        if (cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                itemsList.add(new Items(cursor.getInt(0), cursor.getString(1)));
+            }
+        }
+        return itemsList;
+    }
+    public List<Items> GetAllWaiterItems(SQLiteDatabase db) {
+        List<Items> itemsList = new ArrayList<>();
+        String[] columns = {itemID,item};
+        Cursor cursor = db.query(tblKot, columns, null, null, null, null, null);
         if (cursor.getCount() > 0) {
             while (cursor.moveToNext()) {
                 itemsList.add(new Items(cursor.getInt(0), cursor.getString(1)));

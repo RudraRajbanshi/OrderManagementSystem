@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".AdminDisplayItemActivity">
+    tools:context=".WaiterDisplayItem">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,12 +21,13 @@
         android:layout_marginTop="50dp"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="Admin"
+        android:text="Waiter"
         android:textSize="30dp"
         android:fontFamily="sans-serif-black"
         android:textAlignment="center"/>
 
     </LinearLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,7 +48,5 @@
         android:layout_gravity="end"
         android:src="@drawable/ic_add"
         />
-
-
 
 </LinearLayout>

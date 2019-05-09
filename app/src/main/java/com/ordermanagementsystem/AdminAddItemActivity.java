@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import helper.MyHelper;
@@ -30,7 +31,7 @@ public class AdminAddItemActivity extends AppCompatActivity {
             public void onClick(View v) {
                 long id = myHelper.insertData(etItem.getText().toString(),sqLiteDatabase);
                 if (id>0){
-                    Toast.makeText(AdminAddItemActivity.this,"Successful " +id,Toast.LENGTH_LONG).show();
+                    Toast.makeText(AdminAddItemActivity.this,"Successful ",Toast.LENGTH_LONG).show();
                 }else{
                     Toast.makeText(AdminAddItemActivity.this,"Error ",Toast.LENGTH_LONG).show();
                 }
